@@ -1,0 +1,3 @@
+[submodule "database"]
+	path = lib/java-classes
+	url = https://github.com/PastaTeam/java-classes.git
