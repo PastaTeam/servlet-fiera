@@ -84,6 +84,9 @@ public class Main {
 
         LogoutHandler logoutHandler = new LogoutHandler();
         ServletRepository.pathMap.put("logout", logoutHandler);
+
+        RegisterHandler registerHandler = new RegisterHandler();
+        ServletRepository.pathMap.put("register", registerHandler);
         // ------
 
         Main main = new Main(port);
