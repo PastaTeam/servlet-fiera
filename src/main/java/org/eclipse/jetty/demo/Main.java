@@ -20,9 +20,7 @@ package org.eclipse.jetty.demo;
 
 import com.pastateam.servlet.ServletEntryPoint;
 import com.pastateam.servlet.ServletRepository;
-import com.pastateam.servlet.handlers.AziendeHandler;
-import com.pastateam.servlet.handlers.CommentiHandler;
-import com.pastateam.servlet.handlers.ProdottiHandler;
+import com.pastateam.servlet.handlers.*;
 import org.apache.tomcat.InstanceManager;
 import org.apache.tomcat.SimpleInstanceManager;
 import org.eclipse.jetty.server.ConnectionFactory;
@@ -80,6 +78,12 @@ public class Main {
 
         CommentiHandler commentiHandler = new CommentiHandler();
         ServletRepository.pathMap.put("commenti", commentiHandler);
+
+        LoginHandler loginHandler = new LoginHandler();
+        ServletRepository.pathMap.put("login", loginHandler);
+
+        LogoutHandler logoutHandler = new LogoutHandler();
+        ServletRepository.pathMap.put("logout", logoutHandler);
         // ------
 
         Main main = new Main(port);

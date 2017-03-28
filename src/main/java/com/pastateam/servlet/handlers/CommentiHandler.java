@@ -57,11 +57,12 @@ public class CommentiHandler extends PathHandler {
 
         LoggedUser loggedUser = AuthUtils.checkLogged(req);
         if (loggedUser == null || loggedUser.getType() != LoggedUser.UserType.PERSONA) {
-            // TODO: errore
+            resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+            resp.getWriter().println("{\"error\": \"already logged in\"}");
             return;
         }
 
-        Integer ID = commentiRepo.addCommento((String) postParams.get("commento"), ((Long) postParams.get("prodotto")).intValue(), loggedUser.getID());
+        Integer ID = commentiRepo.addCommento((String) postParams.get("commento"), Integer.parseInt((String) postParams.get("prodotto")), loggedUser.getID());
         resp.getWriter().println("{}");
     }
 

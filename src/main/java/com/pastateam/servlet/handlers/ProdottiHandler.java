@@ -49,7 +49,8 @@ public class ProdottiHandler extends PathHandler {
 
         LoggedUser loggedUser = AuthUtils.checkLogged(req);
         if (loggedUser == null || loggedUser.getType() != LoggedUser.UserType.AZIENDA) {
-            // TODO: errore
+            resp.setStatus(HttpServletResponse.SC_FORBIDDEN);
+            resp.getWriter().println("{\"error\": \"invalid session\"}");
             return;
         }
 
